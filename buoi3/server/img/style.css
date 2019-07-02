@@ -1,0 +1,63 @@
+p {
+    color: whitesmoke;
+    background-color: yellow;
+    background-image: url("./colorpicker.gif");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    border: 1px dotted red;
+    border-radius: 0%;
+    box-sizing: border-box
+}
+
+.text-red {
+    color: red;
+}
+
+#title {
+    color: cyan;
+}
+
+[type=text] {
+    color: green
+}
+
+[class=text-red] {
+    color: red
+}
+
+h3, h6, div {
+    color: magenta;
+}
+
+ul li {
+    color: blue
+}
+
+ol li {
+    color: brown
+}
+
+ol > li {
+    color: chartreuse
+}
+
+a:hover {
+    color: wheat
+}
+
+input:focus {
+    color: indigo
+}
+
+span {
+    width: 99999px;
+    height: 99px;
+    background-color: aqua;
+    display: block;
+}
+
+div {
+    padding: 40px 20px 15px 5px;
+    margin: 40px 20px 15px 5px;
+}
