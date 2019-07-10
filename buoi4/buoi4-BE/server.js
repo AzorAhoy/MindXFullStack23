@@ -42,11 +42,20 @@ app.post('/addquestion', function (request, response) {
     response.redirect('http://localhost:5000/chi_tiet.html/?questionId='+question.id);
 });
 
-app.post('/', function(request,response) {
-    console.log("Received!");
-    console.log(request.body);
+app.post('/', function(request, response) {
+    console.log("Received2!");
+    console.log(request.body.btn_yesno);
+    const res = request.body.btn_yesno;
     console.log(request.params);
-    //response.redirect('http://localhost:5000/chi_tiet.html/?questionId='+newNum);
+    const questionid = request.params.questionid;
+    const list = JSON.parse(fs.readFileSync('questions.json', { encoding: 'utf-8' }));
+    const lastQ = list[list.length - 1];
+    // console.log(request.params);
+    // request.on('data', function(data) {
+    //     //console.log("Data: " + data);
+    //     console.log("Data: " , data +"");
+    // })
+    //response.redirect('http://localhost:5000/chi_tiet.html/?questionId='+1);
 })
 
 //param
