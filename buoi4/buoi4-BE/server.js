@@ -45,16 +45,36 @@ app.post('/addquestion', function (request, response) {
 app.post('/', function(request, response) {
     console.log("Received2!");
     console.log(request.body.btn_yesno);
-    const res = request.body.btn_yesno;
-    console.log(request.params);
-    const questionid = request.params.questionid;
+    const recv = request.body.btn_yesno.split('.');
+    const res = recv[0];
+    const questionid = recv[1];
     const list = JSON.parse(fs.readFileSync('questions.json', { encoding: 'utf-8' }));
-    const lastQ = list[list.length - 1];
-    // console.log(request.params);
-    // request.on('data', function(data) {
-    //     //console.log("Data: " + data);
-    //     console.log("Data: " , data +"");
-    // })
+    const question = list.filter(function (item) {
+        return item.id == questionid;
+    })[0];
+    if (res == 'cauhoikhac') {
+        response.redirect('http://localhost:5000/');
+    }
+    if (res == 'ketquavote') {
+        response.redirect('http://localhost:5000/chi_tiet.html/?questionId='+1);
+    }
+    if (res == 'yes') {
+        question.yay += 1;
+        list[questionid] = question;
+        fs.writeFileSync('questions.json', JSON.stringify(list));
+        response.redirect('http://localhost:5000/chi_tiet.html/?questionId='+questionid);
+        console.log(question);
+
+    }
+    if (res == 'no') {
+        question.nay += 1;
+        list[questionid] = question;
+        fs.writeFileSync('questions.json', JSON.stringify(list));
+        response.redirect('http://localhost:5000/chi_tiet.html/?questionId='+questionid);
+        console.log(question);
+    }
+    
+
     //response.redirect('http://localhost:5000/chi_tiet.html/?questionId='+1);
 })
 
