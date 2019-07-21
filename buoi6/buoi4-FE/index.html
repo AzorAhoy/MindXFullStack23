@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" type="text/css" href="/haha.css">
+    <title>CHI TIET CAU HOI</title>
+</head>
+<body>
+  <h1></h1>
+  <form action="http://localhost:6789/vote/" method="POST">
+    <button name="vote" value="nay" type="submit">Sai / Không / Trái</button>
+    <button name="vote" value="yay" type="submit">Đúng / Có / Phải</button>
+  </form>
+  <a id="result" href="#"><button >Kết quả vote</button></a>
+  <a href="http://localhost:5000/"><button>Câu hỏi khác</button></a>
+  <script>
+    
+    //const questionId = 1;
+    //console.log(questionId);
+    fetch('http://localhost:6789/random/' ,{
+        method:'GET',
+    }).then(function(response) {
+        return response.json();
+    }).then(function(data) {
+        console.log(data);
+        console.log(document.querySelector('h1'));
+        
+        const questionId = data._id;
+        console.log(questionId);
+        document.querySelector('h1').innerText = data.content;
+
+        document.querySelector('form').action += questionId +"";
+        console.log(document.querySelector('form').action);
+        document.getElementById('result').href = "http://localhost:5000/chi_tiet/?questionId="+ questionId;
+        //document.querySelector('')
+    }).catch(err => {
+        console.log('Error: ', err);
+    });
+    
+</script>
+</body>
+</html>

@@ -1,0 +1,11 @@
+/* <style name="global_styles">*/
+body{padding:0;margin:0;overflow-y:scroll}
+
+body.autoscroll{overflow-y:auto}
+
+body.no-scroll{overflow:hidden}body.no-y-scroll{overflow-y:hidden}
+
+.hidden{display:none}
+
+textarea{--paper-input-container-input_-_white-space:pre-wrap}
+
