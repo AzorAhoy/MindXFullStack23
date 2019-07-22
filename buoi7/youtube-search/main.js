@@ -24,14 +24,17 @@ function fetchapi(api, keyword) {
                 // document.getElementById("result-list").appendChild(a);
                 var description = document.createElement("p");
                 description.innerText = desc;
+                description.id = "description";
                 var thumbnails = document.createElement("img");
                 thumbnails.src = img;
+                thumbnails.id = "thumbnail";
                 var div = document.createElement("div");
                 var node = document.createElement("A");
                 node.href = "https://www.youtube.com/watch?v=" + id;
                 
                 var textnode = document.createTextNode(title);
                 node.innerHTML = title;
+                node.id = "title";
                 div.appendChild(thumbnails);
                 div.appendChild(node);
                 div.appendChild(description);
@@ -61,6 +64,24 @@ function fetchapi(api, keyword) {
 
 
 document.getElementsByClassName("btn-primary")[0].addEventListener("click", function(e) {
+    var list = document.getElementById("result-list");
+    while (list.hasChildNodes()) {   
+        list.removeChild(list.firstChild);
+        //list.clear();
+    }
+    e.preventDefault();
+    console.log(document.getElementsByClassName("btn-primary")[0]);
+    console.log(document.getElementsByName("keyword")[0].value);
+    var keyword = document.getElementsByName("keyword")[0].value;
+    const start = "https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=25&q=";
+    const end= '&type=video&key=AIzaSyA9gQZ-oYomFypZN7PsupZJtOfQqA6Q3qw';
+    var api = start + keyword + end;
+    console.log("API: ",api)
+    fetchapi(api, keyword);
+
+})  
+
+document.getElementsByName("keyword")[0].addEventListener("input", function(e) {
     var list = document.getElementById("result-list");
     while (list.hasChildNodes()) {   
         list.removeChild(list.firstChild);
