@@ -1,0 +1,19 @@
+#Youtube{
+    height: 120px;
+    width: 300;
+}
+
+.text-center{
+    text-align: center
+}
+
+.loading {
+    
+    align-items: center;
+    display: block
+}
+
+#result {
+    /* background-color: blueviolet */
+    display: block;
+}
